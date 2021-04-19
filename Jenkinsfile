@@ -1,4 +1,4 @@
-def groovy
+def test
 
 pipeline {
     agent any
@@ -10,14 +10,14 @@ pipeline {
         stage("init") {
             steps {
                 script {
-                   gv = load "script.groovy" 
+                   test = load "script.groovy" 
                 }
             }
         }
         stage("build") {
             steps {
                 script {
-                    gv.buildApp()
+                    test.buildApp()
                 }
             }
         }
@@ -29,14 +29,14 @@ pipeline {
             }
             steps {
                 script {
-                    gv.testApp()
+                    test.testApp()
                 }
             }
         }
         stage("deploy") {
             steps {
                 script {
-                    gv.deployApp()
+                    test.deployApp()
                 }
             }
         }
