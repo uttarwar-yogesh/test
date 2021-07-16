@@ -3,7 +3,7 @@ def test
 pipeline {
     agent any
     stages {
-        stage('init') {
+        stage('init stage') {
             steps {
                 script {
                    test = load "script.groovy" 
