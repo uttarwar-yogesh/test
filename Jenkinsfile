@@ -1,14 +1,19 @@
-def test
-
 pipeline {
     agent any
     stages {
-        stage('init') {
+        stage('Build') {
             steps {
-                script {
-                   test = load "script.groovy" 
-                }
+                echo 'Hello World'
+                // currentBuild.result == null here
             }
         }
-    }   
+    }
+    post {
+        always {
+            script {
+                currentBuild.result = currentBuild.result ?: 'SUCCESS'
+                notifyBitbucket()
+            }
+        }
+    }
 }
